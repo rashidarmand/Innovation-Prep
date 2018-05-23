@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="justify-content-center" style="display: flex;">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>First name:</strong>
+        <%= @teacher.first_name %>
+      </li>
+      <li class="list-group-item">
+        <strong>Last name:</strong>
+        <%= @teacher.last_name %>
+      </li>
+      <li class="list-group-item">
+        <strong>Age:</strong>
+        <%= @teacher.age %>
+      </li>
+      <li class="list-group-item">
+        <strong>Salary:</strong>
+        <%= @teacher.salary %>
+      </li>
+      <li class="list-group-item">
+        <strong>Education:</strong>
+        <%= @teacher.education %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Edit', edit_teacher_path(@teacher), class: "btn btn-primary text-white" %> |
+<%= link_to 'Back', teachers_path, class: "btn btn-primary text-white" %>

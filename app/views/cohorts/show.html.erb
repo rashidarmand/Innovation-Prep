@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<div class="justify-content-center" style="display: flex;">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>Cohort Name:</strong>
+        <%= @cohort.name %>
+      </li>
+      <li class="list-group-item">
+        <strong>Start date:</strong>
+        <%= @cohort.start_date.localtime.strftime("%-m/%-d/%y") %>
+      </li>
+      <li class="list-group-item">
+        <strong>End date:</strong>
+        <%= @cohort.end_date.localtime.strftime("%-m/%-d/%y") %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<%= link_to 'Edit', edit_cohort_path(@cohort), class: "btn btn-primary text-white" %> |
+<%= link_to 'Back', cohorts_path, class: "btn btn-primary text-white" %>

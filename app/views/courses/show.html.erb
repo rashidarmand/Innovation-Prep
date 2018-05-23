@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<div class="justify-content-center" style="display: flex;">
+  <div class="card" style="width: 18rem;">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <strong>Course Name:</strong>
+        <%= @course.name %>
+      </li>
+      <li class="list-group-item">
+        <strong>Course Hours:</strong>
+        <%= @course.hours %>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<br>
+
+<% if !@course.students.empty? || !@course.teachers.empty? %>
+<p>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Students</th>
+        <th>Teachers</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @course.students.each do |student|%>
+      <tr>
+        <td><%= student.full_name %></td>
+      </tr>
+      <% end %>
+      <% @course.teachers.each do |teacher|%>
+      <tr>
+        <td><%= "#{teacher.first_name} #{teacher.last_name}" %></td>
+      <tr>
+      <% end %>
+    </tbody>
+  </table>
+</p>
+<% else %>
+<p>
+  <h2><strong>No Students or Teachers 😞</strong></h2>
+</p>
+<% end %>
+
+<%# select for teacher, checkbox for student %>
+
+
+<%= link_to 'Edit', edit_course_path(@course), class: "btn btn-primary text-white"  %> |
+<%= link_to 'Back', courses_path, class: "btn btn-primary text-white"  %>
