@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   # get 'course_students/destroy'
   # get 'course_students/create'
   post "/course_students/:id", to: "course_students#create"
+  post "/course_teachers/:id", to: "course_teachers#create"
   resources :course_students
+  resources :course_teachers
   resources :cohorts
   resources :courses
   

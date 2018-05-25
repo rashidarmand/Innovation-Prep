@@ -32,13 +32,14 @@
       <% @course.students.each do |student|%>
       <tr>
         <td><%= student.full_name %></td>
+        <td><%= @course.teachers.first.full_name %></td>
       </tr>
       <% end %>
-      <% @course.teachers.each do |teacher|%>
-      <tr>
-        <td><%= "#{teacher.first_name} #{teacher.last_name}" %></td>
-      <tr>
-      <% end %>
+    
+      <%# <tr>
+        
+      <tr> %>
+      
     </tbody>
   </table>
 </p>

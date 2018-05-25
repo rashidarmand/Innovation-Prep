@@ -19,5 +19,20 @@
 
 <br>
 
+<%= form_for @course_teacher, method: :create do |f| %>
+  <div>
+  <%= f.collection_select(:teacher_id, @teachers, :id, :full_name)  %>
+  </div>
+  <br>
+  <%= f.hidden_field(:course_id, value: "#{@course.id}") %>
+  <%= hidden_field(:id, value: "#{@course.id}") %>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <div>
+  <%= f.submit "Add Teacher", class: "btn btn-primary"  %>
+  </div>
+<% end %>
+
+<br>
+
 <%= link_to 'Show', @course, class: "btn btn-primary text-white" %> |
 <%= link_to 'Back', courses_path, class: "btn btn-primary text-white" %>

@@ -12,15 +12,15 @@ class CourseTeachersController < ApplicationController
 
   def create
     # debugger
-    @course = Course.find(params[:course_id])
+    # @course = Course.find(params[:course_id])
     @course_teacher = CourseTeacher.new(course_teacher_params)
         
     respond_to do |format|
       if @course_teacher.save
-        format.html { redirect_to @course, notice: 'Teacher was successfully added.' }
+        format.html { redirect_to courses_path, notice: 'Teacher was successfully added.' }
         format.json { render :show, status: :created, location: @course }
       else
-        format.html { redirect_to @course, notice: 'Teacher unable to be added' }
+        format.html { redirect_to courses_path, notice: 'Teacher unable to be added' }
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
@@ -33,7 +33,7 @@ class CourseTeachersController < ApplicationController
   def destroy
   end
 
-  def course_student_params
+  def course_teacher_params
     params.require(:course_teacher).permit(:course_id, :teacher_id)
   end
 

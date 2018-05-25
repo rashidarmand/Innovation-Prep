@@ -24,8 +24,9 @@ class CoursesController < ApplicationController
   def new
     @course = Course.new
     @course_student = CourseStudent.new
+    @course_teacher = CourseTeacher.new
+    
     @students = Student.all
-
     @student_ids = params[:student_ids]
     # puts params[:student_ids]
   end
@@ -33,19 +34,20 @@ class CoursesController < ApplicationController
   # GET /courses/1/edit
   def edit
     @course_student = CourseStudent.new
-    @students = Student.where.not(id: @course.course_students.each{|cs| cs.student_id})
+    @course_teacher = CourseTeacher.new
 
-    # @teachers = Teacher.where.not(id: @course.course_teachers.each{|cs| cs.teacher_id})
+    @students = Student.where.not(id: @course.course_students.each{|cs| cs.student_id})
+    @teachers = Teacher.where.not(id: @course.course_teachers.each{|cs| cs.teacher_id})
     # @course = Course.new
-    puts params[:student_id]
+    # puts params[:student_id]
 
     @course_students = CourseStudent.where(course_id: @course.id).map do |course_student|
       course_student.student_id
     end
 
-    # @course_teachers = CourseTeacher.where(course_id: @course.id).map do |course_teacher|
-    #   course_teacher.teacher_id
-    # end
+    @course_teachers = CourseTeacher.where(course_id: @course.id).map do |course_teacher|
+      course_teacher.teacher_id
+    end
 
 
     # if CourseStudent.find_by(course_id: params[:id])
@@ -116,48 +118,5 @@ class CoursesController < ApplicationController
     def course_params
       params.require(:course).permit(:name, :hours)
     end
-
-    # def add_student
-    #   student_ids = params[:student_ids]
-    #   puts params[:student_ids]
-  
-    #   unless student_ids && student_ids.empty? && student_ids.each{|id| @course.students.include?(id)}
-    #     student_ids.each do |student_id|
-    #       let student_in_course = CourseStudent.new(
-    #         course_id: @course.id, student_id: student_id
-    #         )
-          
-    #         respond_to do |format|
-    #           if student_in_course.save
-    #             format.html { redirect_to @course, notice: 'Student was successfully added.' }
-    #             format.json { render :show, status: :created, location: @course }
-    #           else
-    #             format.html { render :show }
-    #             format.json { render json: @course.errors, status: :unprocessable_entity }
-    #           end
-    #         end
-
-    #       end
-    #   end
-    #     # student_ids.each do |student_id|
-    #     # CourseStudent.create(course_id: @course.id, student_id: student_id)
-    #     # end
-
-
-    #   # let student_in_course = CourseStudent.new(
-    #   #   student_id: params[:student_id], course_id: @course.id
-    #   #   )
-
-    #   # respond_to do |format|
-    #   #   if student_in_course.save
-    #   #     format.html { redirect_to @course, notice: 'Student was successfully added.' }
-    #   #     format.json { render :show, status: :created, location: @course }
-    #   #   else
-    #   #     format.html { render :show }
-    #   #     format.json { render json: @course.errors, status: :unprocessable_entity }
-    #   #   end
-    #   # end
-
-    # end
 
 end
