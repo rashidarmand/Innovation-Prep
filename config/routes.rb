@@ -25,6 +25,6 @@ Rails.application.routes.draw do
   
   resources :teachers
   resources :students
-  root 'home#index'
+  root 'clearance/sessions#new'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
