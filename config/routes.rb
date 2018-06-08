@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   # get 'course_students/create'
   post "/course_students/:id", to: "course_students#create"
   post "/course_teachers/:id", to: "course_teachers#create"
+  post "/cohort_courses/:id", to: "cohort_courses#create"
+  resources :cohort_courses
   resources :course_students
   resources :course_teachers
   resources :cohorts

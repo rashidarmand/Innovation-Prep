@@ -1,0 +1,2 @@
+module CohortCoursesHelper
+end

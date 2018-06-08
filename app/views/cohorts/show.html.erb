@@ -21,5 +21,35 @@
 
 <br>
 
+<% if !@cohort.courses.empty? %>
+<p>
+  <table class="table table-striped table-sm">
+    <thead>
+      <tr>
+        <th>Course</th>
+        <th>Hours</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @cohort.courses.each do |course|%>
+      <tr>
+        <td><%= course.name %></td>
+        <td><%= course.hours %></td>
+      </tr>
+      <% end %>
+      
+    </tbody>
+  </table>
+</p>
+<% else %>
+<p>
+  <h2><strong>No Courses Yet 😕</strong></h2>
+</p>
+<% end %>
+
+<br>
+
 <%= link_to 'Edit', edit_cohort_path(@cohort), class: "btn btn-primary text-white" %> |
 <%= link_to 'Back', cohorts_path, class: "btn btn-primary text-white" %>

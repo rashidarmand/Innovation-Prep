@@ -35,9 +35,11 @@ class CoursesController < ApplicationController
   def edit
     @course_student = CourseStudent.new
     @course_teacher = CourseTeacher.new
+    @cohort_course = CohortCourse.new
 
     @students = Student.where.not(id: @course.course_students.each{|cs| cs.student_id})
-    @teachers = Teacher.where.not(id: @course.course_teachers.each{|cs| cs.teacher_id})
+    @teachers = Teacher.where.not(id: @course.course_teachers.each{|ct| ct.teacher_id})
+    @cohorts = Cohort.where.not(id: @course.cohort_courses.each{|cc| cc.cohort_id})
     # @course = Course.new
     # puts params[:student_id]
 
